@@ -1,0 +1,66 @@
+// Prisma schema for NYC Hidden Spots Explorer
+// SQLite for easy local development
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id          String       @id @default(cuid())
+  name        String
+  email       String       @unique
+  password    String
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
+  hiddenSpots HiddenSpot[]
+  reviews     Review[]
+  savedSpots  SavedSpot[]
+}
+
+model HiddenSpot {
+  id          String      @id @default(cuid())
+  name        String
+  description String
+  category    String
+  borough     String
+  address     String
+  latitude    Float
+  longitude   Float
+  priceRange  String
+  imageUrl    String?
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
+  userId      String
+  user        User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+  reviews     Review[]
+  savedSpots  SavedSpot[]
+}
+
+model Review {
+  id           String     @id @default(cuid())
+  rating       Int
+  comment      String
+  createdAt    DateTime   @default(now())
+  updatedAt    DateTime   @updatedAt
+  userId       String
+  hiddenSpotId String
+  user         User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+  hiddenSpot   HiddenSpot @relation(fields: [hiddenSpotId], references: [id], onDelete: Cascade)
+}
+
+// Many-to-many between User and HiddenSpot via SavedSpot
+model SavedSpot {
+  id           String     @id @default(cuid())
+  userId       String
+  hiddenSpotId String
+  createdAt    DateTime   @default(now())
+  user         User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+  hiddenSpot   HiddenSpot @relation(fields: [hiddenSpotId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, hiddenSpotId])
+}
