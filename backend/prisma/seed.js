@@ -57,7 +57,7 @@ const sampleSpots = [
     latitude: 40.7618,
     longitude: -73.9772,
     priceRange: '$',
-    imageUrl: 'https://images.unsplash.com/photo-1604908176997-43162f4f0c4d?w=600',
+    imageUrl: 'https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=600',
   },
   {
     name: 'Fort Tryon Park',
