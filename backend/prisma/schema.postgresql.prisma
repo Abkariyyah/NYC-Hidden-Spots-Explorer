@@ -1,11 +1,11 @@
-// SQLite schema (local dev and Railway with file:./dev.db)
+// PostgreSQL schema (Railway Postgres)
 
 generator client {
   provider = "prisma-client-js"
 }
 
 datasource db {
-  provider = "sqlite"
+  provider = "postgresql"
   url      = env("DATABASE_URL")
 }
 

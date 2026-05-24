@@ -52,8 +52,8 @@ export async function getAllSpots(req, res) {
 
     res.json(spots.map(enrichSpot));
   } catch (error) {
-    console.error('Get spots error:', error);
-    res.status(500).json({ error: 'Failed to fetch spots' });
+    console.error('Get spots error:', error.message);
+    res.status(500).json({ error: 'Failed to fetch spots', detail: error.message });
   }
 }
 
@@ -68,8 +68,8 @@ export async function getTrendingSpots(req, res) {
 
     res.json(enriched.slice(0, 6));
   } catch (error) {
-    console.error('Trending error:', error);
-    res.status(500).json({ error: 'Failed to fetch trending spots' });
+    console.error('Trending error:', error.message);
+    res.status(500).json({ error: 'Failed to fetch trending spots', detail: error.message });
   }
 }
 
