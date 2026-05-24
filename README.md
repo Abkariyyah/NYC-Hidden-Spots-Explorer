@@ -121,7 +121,9 @@ When we first added the trending route as `GET /api/spots/:id`, requests to `/ap
 ## Individual Contributions
 
 ### Abkariyyah Ahmed
-<!-- Add your reflection: what you built, challenges, what you learned -->
+
+I worked on the backend functionality and overall application structure for the project. I helped implement authentication using JWT and bcrypt, created several API routes with Express, and designed the Prisma database models and relationships. I also worked on integrating the interactive map feature and making sure users could properly create, edit, delete, save, and review hidden spots. One challenge I came across was managing protected routes and making sure users could only modify their own content, but after debugging middleware and testing endpoints carefully, I was able to get the authorization system working correctly. Through this project, I learned a lot more about how frontend and backend systems communicate in a full-stack application and how important clean organization is when working on a larger project.
 
 ### Lal Karim
-<!-- Add your reflection: what you built, challenges, what you learned -->
+
+I focused on the frontend development and improving the user experience of the application. I worked on building several React pages and reusable components, styling the application with Tailwind CSS, and implementing features such as filtering hidden spots, displaying reviews, and showing trending locations on the homepage. I also helped connect the frontend to backend API routes using Axios and tested many of the CRUD features to make sure they worked smoothly. One challenge I faced was handling state updates across different pages after creating or editing spots, but working through that helped me better understand React state management and routing. This project helped me gain more confidence building a complete full-stack application from start to finish.
